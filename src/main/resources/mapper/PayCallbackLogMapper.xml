@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.FoodSystem.wx.mapper.PayCallbackLogMapper">
+
+    <!-- 插入日志 -->
+    <insert id="insertLog" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `food-system`.pay_callback_log
+            (order_id, callback_no, created_at)
+        VALUES
+            (#{orderNumber}, #{callbackData}, NOW());
+    </insert>
+
+    <!-- 查询全部回调日志 -->
+    <select id="listByOrderNumber" resultType="com.FoodSystem.wx.entity.PayCallbackLog">
+        SELECT * FROM `food-system`.pay_callback_log
+        WHERE order_id = #{orderNumber}
+        ORDER BY created_at DESC;
+    </select>
+
+    <!-- 最新记录 -->
+    <select id="latestLog" resultType="com.FoodSystem.wx.entity.PayCallbackLog">
+        SELECT * FROM `food-system`.pay_callback_log
+        WHERE order_id = #{orderNumber}
+        ORDER BY created_at DESC
+        LIMIT 1;
+    </select>
+
+</mapper>

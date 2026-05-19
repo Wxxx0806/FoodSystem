@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.FoodSystem.wx.mapper.OrderDetailMapper">
+
+    <!-- 批量插入 -->
+    <insert id="batchInsert">
+        INSERT INTO `food-system`.order_detail
+        (name, image, order_id, dish_id, number, amount, price, subtotal)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name}, #{item.image}, #{item.orderId},
+            #{item.dishId}, #{item.number}, #{item.amount}, #{item.price}, #{item.subtotal})
+        </foreach>
+    </insert>
+
+    <!-- 查询订单明细 -->
+    <select id="listByOrderId" resultType="com.FoodSystem.wx.entity.OrderDetail">
+        SELECT * FROM `food-system`.order_detail WHERE order_id = #{orderId};
+    </select>
+
+    <!-- 删除明细 -->
+    <delete id="deleteByOrderId">
+        DELETE FROM `food-system`.order_detail WHERE order_id = #{orderId};
+    </delete>
+
+    <!-- 查询金额 -->
+    <select id="totalAmount" resultType="double">
+        SELECT SUM(amount * number) FROM `food-system`.order_detail WHERE order_id = #{orderId};
+    </select>
+
+</mapper>

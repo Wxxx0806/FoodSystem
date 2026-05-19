@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.FoodSystem.wx.mapper.UserMapper">
+
+    <!-- 根据姓名和手机号查询用户 -->
+    <select id="getByNameAndPhone"
+            parameterType="map"
+            resultType="com.FoodSystem.wx.entity.User">
+        SELECT *
+        FROM `food-system`.`user`
+        WHERE name = #{name}
+          AND phone = #{phone}
+        LIMIT 1
+    </select>
+
+</mapper>
+
+
