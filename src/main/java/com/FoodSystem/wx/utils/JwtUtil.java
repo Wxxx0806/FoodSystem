@@ -14,10 +14,7 @@ public class JwtUtil {
 
     /**
      * 生成JWT
-     *
-     * @param secretKey 秘钥
-     * @param ttlMillis 过期时间（毫秒）
-     * @param claims    自定义数据
+
      */
     public static String createJWT(String secretKey, long ttlMillis, Map<String, Object> claims) {
 

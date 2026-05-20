@@ -16,32 +16,6 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
-    /**
-     * 新增菜品
-     */
-    @PostMapping
-    public Result add(@RequestBody Dish dish) {
-        try {
-            dishService.add(dish);
-            return Result.success("操作成功", dish);
-        } catch (Exception e) {
-            return Result.error("新增菜品失败：" + e.getMessage());
-        }
-    }
-
-    /**
-     * 更新菜品
-     */
-    @PutMapping
-    public Result update(@RequestBody Dish dish) {
-        try {
-            dishService.update(dish);
-            return Result.success("操作成功", dish);
-        } catch (Exception e) {
-            return Result.error("更新菜品失败：" + e.getMessage());
-        }
-    }
-
 
     /**
      * 查询所有菜品

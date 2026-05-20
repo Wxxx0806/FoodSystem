@@ -1,6 +1,5 @@
 package com.FoodSystem.wx.controller;
 
-
 import com.FoodSystem.wx.dto.EmployeeRequest;
 import com.FoodSystem.wx.dto.EmployeeUpdateRequest;
 import com.FoodSystem.wx.entity.Employee;
@@ -17,14 +16,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    /**
-     * 新增员工
-     */
-    @PostMapping
-    public Result<Employee> create(@RequestBody EmployeeRequest req) {
-        Employee e = employeeService.create(req);
-        return Result.success(e);
-    }
+
 
     /**
      * 修改员工信息
@@ -83,3 +75,5 @@ public class EmployeeController {
 
 
 }
+
+
