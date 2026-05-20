@@ -12,7 +12,6 @@ public interface EmployeeMapper {
 
     Employee getByUsername(@Param("username") String username);
 
-    void insert(Employee employee);
 
     void update(Employee employee);
 

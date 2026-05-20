@@ -24,8 +24,7 @@ public interface DishMapper {
     @Select("select * from `food-system`.dish")
     List<Dish> getAll();
 
-    //更新菜品状态
-    void updateStatus(@Param("status") Integer status, @Param("id") Long id);
+
 
     //分页查询
     List<Dish> pageQuery(@Param("name") String name, @Param("offset") Integer offset, @Param("pageSize") Integer pageSize);
